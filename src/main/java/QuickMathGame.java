@@ -14,7 +14,7 @@ public class QuickMathGame extends JFrame implements ActionListener{
     
     private ArrayList<Integer> ques = new ArrayList<Integer>();
     
-    private int time = 60;
+    private int time = 120;
     
     private boolean gameStatus = false;
     
@@ -27,9 +27,11 @@ public class QuickMathGame extends JFrame implements ActionListener{
     String quesString = "";
     
     // Below are GUI componets
+    
     JPanel gamePanel = new JPanel();
           
     JLabel quesLabel = new JLabel(quesString, SwingConstants.CENTER);
+    Font labelFont = quesLabel.getFont();
         
     JLabel timerLabel = new JLabel(Integer.toString(time, SwingConstants.CENTER));
     
@@ -220,6 +222,9 @@ public class QuickMathGame extends JFrame implements ActionListener{
                 break;
         }
         quesLabel.setText(quesString);
+        quesLabel.setFont(new Font(labelFont.getName(), Font.PLAIN, 20));
+        result.setFont(new Font(labelFont.getName(), Font.PLAIN, 20));
+        timerLabel.setFont(new Font(labelFont.getName(), Font.PLAIN, 20));
     }
     
     public void RefreshGame(){
