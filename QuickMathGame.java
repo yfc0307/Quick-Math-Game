@@ -1,6 +1,5 @@
 import java.util.*;
 import javax.swing.*;
-import javax.swing.Timer.*;
 import java.awt.event.*;
 import java.awt.*;
 
@@ -223,6 +222,12 @@ public class QuickMathGame extends JFrame implements ActionListener{
         quesLabel.setText(quesString);
     }
     
+    public void RefreshGame(){
+        RefreshQuestion();
+        result.setText("Quick Math Game");
+        score = 0;
+    }
+    
 
     public static void main(String[] args){
         QuickMathGame game = new QuickMathGame();
@@ -242,6 +247,9 @@ public class QuickMathGame extends JFrame implements ActionListener{
                 if (game.time <= 0){
                     game.timerLabel.setText("Times Up");
                     game.timerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                    JOptionPane.showMessageDialog(null, "Your score: " + game.score);
+                    game.time = 60;
+                    game.RefreshGame();
                 }
             }
         });
@@ -254,7 +262,7 @@ public class QuickMathGame extends JFrame implements ActionListener{
         game.setLocationRelativeTo(null);
         game.setVisible(true);
         // Below is used to test code using console input.
-        // Below shall be removed when GUI is used
+        // Below can be removed when GUI is used.
         Scanner scan = new Scanner(System.in);
         System.out.println(game.quesString);
         System.out.println("Please input your answer: ");
