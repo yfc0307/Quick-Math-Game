@@ -231,6 +231,7 @@ public class QuickMathGame extends JFrame implements ActionListener{
         RefreshQuestion();
         result.setText("Quick Math Game");
         score = 0;
+        time = 120;
     }
     
 
@@ -253,7 +254,6 @@ public class QuickMathGame extends JFrame implements ActionListener{
                     game.timerLabel.setText("Times Up");
                     game.timerLabel.setHorizontalAlignment(SwingConstants.CENTER);
                     JOptionPane.showMessageDialog(null, "Your score: " + game.score);
-                    game.time = 60;
                     game.RefreshGame();
                 }
             }
