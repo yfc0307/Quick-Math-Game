@@ -154,7 +154,7 @@ public class QuickMathGame extends JFrame implements ActionListener{
     
     public void DecideQuestionType(){ // change question type randomly from range 1 to 12
         Random rand = new Random();
-        questionType = rand.nextInt(13);
+        questionType = rand.nextInt(12)+1;
     }
     
     public void RefreshQuestion(){
