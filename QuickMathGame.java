@@ -14,7 +14,7 @@ public class QuickMathGame extends JFrame implements ActionListener{
     
     private ArrayList<Integer> ques = new ArrayList<Integer>();
     
-    private int time = 60;
+    private int time = 120;
     
     private boolean gameStatus = false;
     
@@ -27,9 +27,11 @@ public class QuickMathGame extends JFrame implements ActionListener{
     String quesString = "";
     
     // Below are GUI componets
+    
     JPanel gamePanel = new JPanel();
           
     JLabel quesLabel = new JLabel(quesString, SwingConstants.CENTER);
+    Font labelFont = quesLabel.getFont();
         
     JLabel timerLabel = new JLabel(Integer.toString(time, SwingConstants.CENTER));
     
@@ -54,7 +56,6 @@ public class QuickMathGame extends JFrame implements ActionListener{
         }
     }
     
-    
     public QuickMathGame(){
         super("Quick Math Game");
         gamePanel.setLayout(new GridLayout(5,1));
@@ -73,8 +74,6 @@ public class QuickMathGame extends JFrame implements ActionListener{
         pack();
     }
     
-    
-        
     public final void InitListA(){ // MUST RUN BEFORE EVERYTHING !!!!!!!!!!!!!!
         for (int i = 1; i < 100; i++){
             listA.add(i);
@@ -117,7 +116,6 @@ public class QuickMathGame extends JFrame implements ActionListener{
             ans = numB - numA; // Answer
         }
         
-        
         ArrayList<Integer> ques = new ArrayList<Integer>();
         if (numA > numB){
             ques.add(numA);
@@ -149,10 +147,9 @@ public class QuickMathGame extends JFrame implements ActionListener{
         return ques;
     }
 
-    
     public void DecideQuestionType(){ // change question type randomly from range 1 to 12
         Random rand = new Random();
-        questionType = rand.nextInt(13);
+        questionType = rand.nextInt(12) + 1;
     }
     
     public void RefreshQuestion(){
@@ -220,15 +217,18 @@ public class QuickMathGame extends JFrame implements ActionListener{
                 break;
         }
         quesLabel.setText(quesString);
+        quesLabel.setFont(new Font(labelFont.getName(), Font.PLAIN, 20));
+        result.setFont(new Font(labelFont.getName(), Font.PLAIN, 20));
+        timerLabel.setFont(new Font(labelFont.getName(), Font.PLAIN, 20));
     }
     
     public void RefreshGame(){
         RefreshQuestion();
         result.setText("Quick Math Game");
         score = 0;
+        time = 120;
     }
     
-
     public static void main(String[] args){
         QuickMathGame game = new QuickMathGame();
         game.InitListA();
@@ -248,7 +248,6 @@ public class QuickMathGame extends JFrame implements ActionListener{
                     game.timerLabel.setText("Times Up");
                     game.timerLabel.setHorizontalAlignment(SwingConstants.CENTER);
                     JOptionPane.showMessageDialog(null, "Your score: " + game.score);
-                    game.time = 60;
                     game.RefreshGame();
                 }
             }
@@ -273,9 +272,7 @@ public class QuickMathGame extends JFrame implements ActionListener{
         else {
             System.out.println("Answer Incorrect");
         }
-        
     }
-    
 }
         
     
